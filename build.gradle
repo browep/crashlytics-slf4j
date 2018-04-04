@@ -1,0 +1,27 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+repositories {
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion rootProject.ext.buildToolsVersion
+}
+
+dependencies {
+    compileOnly group: 'org.slf4j', name: 'slf4j-api', version: rootProject.ext.slf4jApiVersion
+    compileOnly('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+        transitive = true;
+    }
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+}
+
