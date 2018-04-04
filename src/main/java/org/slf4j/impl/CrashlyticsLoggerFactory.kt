@@ -1,6 +1,7 @@
 package org.slf4j.impl
 
 import android.util.Log
+import com.crashlytics.android.Crashlytics
 import org.slf4j.ILoggerFactory
 import org.slf4j.Logger
 import java.util.concurrent.ConcurrentHashMap
@@ -15,6 +16,7 @@ class CrashlyticsLoggerFactory : ILoggerFactory {
 
     init {
         Log.i(javaClass.canonicalName, "slf4j: init")
+        Crashlytics.setString("os.arch", System.getProperty("os.arch"))
     }
 
     /**
