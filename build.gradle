@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url 'https://maven.fabric.io/public' }
     }
 }
 
@@ -8,6 +9,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 repositories {
+    maven { url 'https://maven.fabric.io/public' }
     mavenCentral()
 }
 
@@ -18,7 +20,7 @@ android {
 
 dependencies {
     compileOnly group: 'org.slf4j', name: 'slf4j-api', version: rootProject.ext.slf4jApiVersion
-    compileOnly('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+    compileOnly('com.crashlytics.sdk.android:crashlytics:2.9.3@aar') {
         transitive = true;
     }
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
