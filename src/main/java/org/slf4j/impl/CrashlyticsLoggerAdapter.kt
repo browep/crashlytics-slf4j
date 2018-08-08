@@ -59,22 +59,30 @@ class CrashlyticsLoggerAdapter() : MarkerIgnoringBase() {
 
     override fun error(msg: String?) {
         Crashlytics.log(Log.ERROR, getName(), msg)
+        Crashlytics.logException(Throwable(msg))
     }
 
     override fun error(format: String?, arg: Any?) {
-        Crashlytics.log(Log.ERROR, getName(), format?.let { String.format(it, arg) })
+        val msg = format?.let { String.format(it, arg) }
+        Crashlytics.log(Log.ERROR, getName(), msg)
+        Crashlytics.logException(Throwable(msg))
     }
 
     override fun error(format: String?, arg1: Any?, arg2: Any?) {
-        Crashlytics.log(Log.ERROR, getName(), format?.let { String.format(it, arg1, arg2) })
+        val msg = format?.let { String.format(it, arg1, arg2) }
+        Crashlytics.log(Log.ERROR, getName(), msg)
+        Crashlytics.logException(Throwable(msg))
     }
 
     override fun error(format: String?, vararg arguments: Any?) {
-        Crashlytics.log(Log.ERROR, getName(), format?.let { String.format(it, arguments) })
+        val msg = format?.let { String.format(it, arguments) }
+        Crashlytics.log(Log.ERROR, getName(), msg)
+        Crashlytics.logException(Throwable(msg))
     }
 
     override fun error(msg: String?, t: Throwable?) {
         Crashlytics.log(Log.ERROR, getName(), t?.message)
+        Crashlytics.logException(t)
     }
 
     override fun isDebugEnabled(): Boolean {
